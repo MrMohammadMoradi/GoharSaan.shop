@@ -1,4 +1,3 @@
-
 export default function Home() {
   return (
     <div className="flex flex-col bg-white items-center justify-center min-h-screen py-2">
