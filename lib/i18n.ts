@@ -1,5 +1,6 @@
 export const messages = {
   fa: {
+    test: 'سایت در حال بروزرسانی میباشد، از شکیبایی شما سپاس گزاریم',
     Header: {
       brand: 'گوهر سان',
       home: 'خانه',
@@ -87,6 +88,7 @@ export const messages = {
   },
 
   en: {
+    test: 'This website updating, thank you ',
     Header: {
       brand: 'Gohar Saan',
       home: 'Home',
