@@ -130,3 +130,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.aspect-square {
+  height: 350px;
+}
+
+
