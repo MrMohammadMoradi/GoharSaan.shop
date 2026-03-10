@@ -12,19 +12,19 @@ const CustomerReviews = () => {
       <p className="py-5">تجربه مشتریان ما از خرید در گوهرسان</p>
       <div className="flex flex-wrap py-10 justify-center gap-10">
         <ReviewsCard
-          image="/test.png"
+          avatar ="/test.png"
           customer="Mohammad Moradi"
           reviewText="خدمات پس از فروش عالی و ارسال سریع. بشقاب مسی که سفارش دادم دقیقاً همان چیزی بود که می‌خواستم. قطعاً دوباره خرید خواهم کرد."
           date="1404/09/21"
         />
         <ReviewsCard
-          image="/test.png"
+          avatar="/test.png"
           customer="Mohammad Moradi"
           reviewText="خدمات پس از فروش عالی و ارسال سریع. بشقاب مسی که سفارش دادم دقیقاً همان چیزی بود که می‌خواستم. قطعاً دوباره خرید خواهم کرد."
           date="1404/09/21"
         />
         <ReviewsCard
-          image="/test.png"
+          avatar="/test.png"
           customer="Mohammad Moradi"
           reviewText="خدمات پس از فروش عالی و ارسال سریع. بشقاب مسی که سفارش دادم دقیقاً همان چیزی بود که می‌خواستم. قطعاً دوباره خرید خواهم کرد."
           date="1404/09/21"

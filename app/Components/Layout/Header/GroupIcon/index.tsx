@@ -4,7 +4,7 @@ import Link from 'next/link';
 const GroupIcon = () => {
   return (
     <div className="flex items-center gap-1 pe-2">
-      <Link href={''} className="">
+      <Link href={'/login'} className="">
         <UserRound
           className="size-5 text-Lapis hover:text-Gold transition-colors"
           size={26}
