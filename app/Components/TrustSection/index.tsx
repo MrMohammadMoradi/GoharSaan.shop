@@ -7,7 +7,7 @@ import {
 
 const TrustSection = () => {
   return (
-    <div className="flex flex-wrap justify-center pt-5 pb-10 basis-1/4 gap-10 text-center">
+    <div className="flex flex-wrap justify-center pt-5 pb-10 basis-1/4 gap-5 text-center">
       <div className="flex flex-col min-w-72 items-center justify-center gap-5">
         <div className="py-5 bg-Gold/20 text-Gold rounded-full size-20 flex justify-center items-center">
           <ShieldCheckIcon size={36} />
