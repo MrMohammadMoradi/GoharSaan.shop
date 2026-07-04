@@ -10,5 +10,195 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
+}
+
+enum Role {
+  USER
+  ADMIN
+  VENDOR
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  role          Role      @default(USER)
+  
+  // اطلاعات شخصی
+  firstName     String?
+  lastName      String?
+  phoneNumber   String?   @unique
+  nationalCode  String?   @unique
+  
+  // وضعیت حساب
+  isActive      Boolean   @default(true)
+  emailVerified DateTime?
+  image         String?
+
+  // تاریخچه
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // روابط (Relations)
+  addresses     Address[]
+  orders        Order[]
+  comments      Comment[]
+  cart          Cart?
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  
+  // اطلاعات اصلی
+  name        String
+  description String?  // توضیحات کامل محصول
+  slug        String   @unique // برای URL (مثال: goharsaan.shop/product/mobile-x)
+  
+  // قیمت و موجودی (بسیار حساس)
+  price       Int      // قیمت پایه (به تومان)
+  salePrice   Int?     // قیمت تخفیف‌خورده (اگر null باشد، همان price اعمال می‌شود)
+  stock       Int      @default(0) // تعداد موجودی در انبار
+  
+  // وضعیت نمایش
+  isActive    Boolean  @default(true) // اگر false باشد، در سایت نمایش داده نمی‌شود
+  isFeatured  Boolean  @default(false) // آیا محصول ویژه است؟ (برای نمایش در اسلایدر)
+
+  // تصاویر
+  image       String?  // تصویر اصلی
+  images      String?  // می‌توانید آدرس تصاویر را به صورت JSON Array در یک فیلد ذخیره کنید یا یک جدول جداگانه بسازید
+  
+  // SEO
+  metaTitle   String?
+  metaDesc    String?
+
+  // روابط
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  
+  // ارتباط با سفارشات و نظرات
+  orderItems  OrderItem[]
+  comments    Comment[]
+  cartItems   CartItem[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// مدل دسته‌بندی (Category) که محصولات به آن متصل می‌شوند
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  parentId    String?   // برای دسته‌بندی‌های تو در تو (زیردسته)
+  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  subCategories Category[] @relation("CategoryHierarchy")
+  products    Product[]
+
+  createdAt   DateTime  @default(now())
+}
+
+model Address {
+  id          String   @id @default(cuid())
+  title       String   // مثلا: "خانه"، "محل کار"
+  country     String   //کشور
+  province    String   // استان
+  city        String   // شهر
+  postalCode  String?  // کد پستی
+  fullAddress String   // آدرس کامل
+  phone       String   // شماره تماس گیرنده (ممکن است با شماره خود کاربر فرق داشته باشد)
+  
+  // ارتباط با کاربر
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+   orders     Order[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  
+  // مبلغ و وضعیت
+  totalAmount Int         // مبلغ کل فاکتور (به تومان/ریال)
+  status      OrderStatus @default(PENDING) // وضعیت سفارش
+  
+  // اطلاعات زمانی
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  // ارتباط با کاربر
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // ارتباط با آدرس (آدرسی که در لحظه سفارش انتخاب شده)
+  addressId   String
+  address     Address     @relation(fields: [addressId], references: [id])
+
+  // آیتم‌های داخل سفارش (لیست محصولات خریداری شده)
+  items       OrderItem[]
+}
+
+enum OrderStatus {
+  PENDING    // در انتظار پرداخت
+  PAID       // پرداخت شده
+  PROCESSING // در حال آماده‌سازی
+  SHIPPED    // ارسال شده
+  DELIVERED  // تحویل داده شده
+  CANCELLED  // لغو شده
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  quantity  Int
+  price     Int    // قیمت واحد محصول در لحظه خرید
+  
+  orderId   String
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId String // فرض بر این است که مدل Product دارید
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Comment {
+  id         String   @id @default(cuid())
+  text       String   // متن نظر
+  rating     Int      // امتیاز (مثلا از ۱ تا ۵)
+  isApproved Boolean  @default(false) // آیا توسط تایید شده است؟
+  
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // ارتباط با کاربر (نویسنده نظر)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // ارتباط با محصول (محصولی که نظر روی آن نوشته شده)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // ارتباط یک به یک با کاربر (هر کاربر یک سبد خرید فعال دارد)
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // آیتم‌های داخل سبد خرید
+  items     CartItem[]
+}
+
+model CartItem {
+  id        String @id @default(cuid())
+  quantity  Int    @default(1)
+  
+  cartId    String
+  cart      Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

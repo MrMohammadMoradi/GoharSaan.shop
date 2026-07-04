@@ -1,36 +1,356 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 GhoharSaan Shop | فروشگاه گوهرسان
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![GhoharSaan Logo](https://via.placeholder.com/200x200?text=GhoharSaan)
+
+**A Modern E-commerce Platform for Iranian Handicrafts**  
+**پلتفرم مدرن فروش صنایع دستی ایرانی**
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+
+[English](#english) | [فارسی](#فارسی)
+
+</div>
+
+---
+
+## English
+
+### 📖 About The Project
+
+GhoharSaan.shop is a comprehensive e-commerce platform dedicated to promoting and selling authentic Iranian handicrafts. Our mission is to connect talented artisans with customers worldwide while preserving Iran's rich cultural heritage.
+
+#### 🎯 Key Objectives:
+
+- Showcase and sell traditional Iranian handicrafts
+- Support local artisans and craftspeople
+- Educate users on handicraft creation (upcoming feature)
+- Enable international sales expansion (roadmap)
+
+### ✨ Features
+
+- 🔐 **Authentication System** - Secure user registration and login
+- 👥 **Multi-Role Management**
+  - Buyers: Browse and purchase products
+  - Sellers: List and manage their handicrafts
+  - Admins: Complete platform management
+- 📚 **Educational Section** - Learn how to create handicrafts at home
+- 🌍 **Multi-language Support** - Persian and English interfaces
+- 📝 **Blog System** - Articles about handicrafts and culture
+- 🛒 **Full E-commerce Features** - Cart, checkout, order management
+- 📱 **Responsive Design** - Optimized for all devices
+
+### 🛠️ Tech Stack
+
+**Frontend:**
+
+- [Next.js 14](https://nextjs.org/) - React framework with App Router
+- [React 18](https://reactjs.org/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first styling
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Lucide React](https://lucide.dev/) - Icon library
+
+**Backend:**
+
+- [Prisma ORM](https://www.prisma.io/) - Database toolkit
+- [PostgreSQL](https://www.postgresql.org/) - Relational database
+
+**Development Tools:**
+
+- [Prettier](https://prettier.io/) - Code formatting
+- [Husky](https://typicode.github.io/husky/) - Git hooks
+- [ESLint](https://eslint.org/) - Code linting
+
+### 🚀 Getting Started
+
+#### Prerequisites
+
+- Node.js 18.x or higher
+- PostgreSQL 14.x or higher
+- npm or yarn package manager
+
+#### Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/yourusername/goharsaan-shop.git
+cd goharsaan-shop
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Environment Setup**
+
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/goharsaan"
+
+# Authentication
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
+
+# Optional: Email Service
+SMTP_HOST="smtp.example.com"
+SMTP_PORT=587
+SMTP_USER="your-email@example.com"
+SMTP_PASSWORD="your-password"
+
+# Optional: Payment Gateway
+PAYMENT_GATEWAY_KEY="your-payment-key"
+```
+
+4. **Database Setup**
+
+```bash
+# Generate Prisma Client
+npx prisma generate
+
+# Run migrations
+npx prisma migrate dev
+
+# (Optional) Seed database
+npx prisma db seed
+```
+
+5. **Run the development server**
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+goharsaan-shop/
+├── app/                  # Next.js App Router pages
+├── components/           # React components
+│   ├── ui/              # shadcn/ui components
+│   └── shared/          # Shared components
+├── lib/                 # Utility functions
+├── prisma/              # Database schema and migrations
+├── public/              # Static assets
+├── styles/              # Global styles
+└── types/               # TypeScript type definitions
+```
 
-## Learn More
+### 🗺️ Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+- [x] Core e-commerce functionality
+- [x] Multi-role authentication
+- [x] Blog system
+- [ ] Educational content section
+- [ ] Multi-language support (Persian/English)
+- [ ] International shipping
+- [ ] Mobile application
+- [ ] Artisan verification system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are what make the open-source community amazing! Any contributions you make are **greatly appreciated**.
 
-## Deploy on Vercel
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Distributed under the MIT License. See `LICENSE` file for more information.
+
+### 👨‍💻 Developer
+
+**Mohammad Moradi**  
+GitHub: [@yourusername](https://github.com/yourusername)
+
+---
+
+## فارسی
+
+### 📖 درباره پروژه
+
+گوهرسان یک پلتفرم جامع تجارت الکترونیک است که به معرفی و فروش صنایع دستی اصیل ایرانی اختصاص دارد. هدف ما ایجاد ارتباط بین هنرمندان توانمند و مشتریان در سراسر جهان و حفظ میراث فرهنگی غنی ایران است.
+
+#### 🎯 اهداف کلیدی:
+
+- معرفی و فروش صنایع دستی سنتی ایرانی
+- حمایت از هنرمندان و صنعتگران محلی
+- آموزش ساخت صنایع دستی به کاربران (قابلیت آینده)
+- توسعه فروش بین‌المللی (نقشه راه)
+
+### ✨ ویژگی‌ها
+
+- 🔐 **سیستم احراز هویت** - ثبت‌نام و ورود امن کاربران
+- 👥 **مدیریت چند نقشی**
+  - خریداران: مرور و خرید محصولات
+  - فروشندگان: ثبت و مدیریت صنایع دستی
+  - مدیران: مدیریت کامل پلتفرم
+- 📚 **بخش آموزشی** - یادگیری ساخت صنایع دستی در منزل
+- 🌍 **پشتیبانی چند زبانه** - رابط کاربری فارسی و انگلیسی
+- 📝 **سیستم وبلاگ** - مقالات درباره صنایع دستی و فرهنگ
+- 🛒 **قابلیت‌های کامل فروشگاهی** - سبد خرید، پرداخت، مدیریت سفارشات
+- 📱 **طراحی ریسپانسیو** - بهینه‌سازی شده برای تمام دستگاه‌ها
+
+### 🛠️ تکنولوژی‌های استفاده شده
+
+**فرانت‌اند:**
+
+- [Next.js 14](https://nextjs.org/) - فریمورک React با App Router
+- [React 18](https://reactjs.org/) - کتابخانه UI
+- [TypeScript](https://www.typescriptlang.org/) - ایمنی تایپ
+- [Tailwind CSS](https://tailwindcss.com/) - استایل‌دهی
+- [shadcn/ui](https://ui.shadcn.com/) - کامپوننت‌های UI
+- [Lucide React](https://lucide.dev/) - کتابخانه آیکون
+
+**بک‌اند:**
+
+- [Prisma ORM](https://www.prisma.io/) - ابزار دیتابیس
+- [PostgreSQL](https://www.postgresql.org/) - پایگاه داده رابطه‌ای
+
+**ابزارهای توسعه:**
+
+- [Prettier](https://prettier.io/) - فرمت کد
+- [Husky](https://typicode.github.io/husky/) - Git hooks
+- [ESLint](https://eslint.org/) - بررسی کد
+
+### 🚀 شروع به کار
+
+#### پیش‌نیازها
+
+- Node.js نسخه 18 یا بالاتر
+- PostgreSQL نسخه 14 یا بالاتر
+- مدیر بسته npm یا yarn
+
+#### نصب
+
+1. **کلون کردن مخزن**
+
+```bash
+git clone https://github.com/yourusername/goharsaan-shop.git
+cd goharsaan-shop
+```
+
+2. **نصب وابستگی‌ها**
+
+```bash
+npm install
+# یا
+yarn install
+```
+
+3. **تنظیمات محیط**
+
+فایل `.env` را در مسیر اصلی ایجاد کنید:
+
+```env
+# دیتابیس
+DATABASE_URL="postgresql://user:password@localhost:5432/goharsaan"
+
+# احراز هویت
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
+
+# اختیاری: سرویس ایمیل
+SMTP_HOST="smtp.example.com"
+SMTP_PORT=587
+SMTP_USER="your-email@example.com"
+SMTP_PASSWORD="your-password"
+
+# اختیاری: درگاه پرداخت
+PAYMENT_GATEWAY_KEY="your-payment-key"
+```
+
+4. **راه‌اندازی دیتابیس**
+
+```bash
+# تولید Prisma Client
+npx prisma generate
+
+# اجرای migrations
+npx prisma migrate dev
+
+# (اختیاری) پر کردن دیتابیس با داده‌های اولیه
+npx prisma db seed
+```
+
+5. **اجرای سرور توسعه**
+
+```bash
+npm run dev
+# یا
+yarn dev
+```
+
+مرورگر خود را باز کرده و به آدرس [http://localhost:3000](http://localhost:3000) بروید.
+
+### 📁 ساختار پروژه
+
+```
+goharsaan-shop/
+├── app/                  # صفحات Next.js App Router
+├── components/           # کامپوننت‌های React
+│   ├── ui/              # کامپوننت‌های shadcn/ui
+│   └── shared/          # کامپوننت‌های مشترک
+├── lib/                 # توابع کمکی
+├── prisma/              # اسکیما و migrations دیتابیس
+├── public/              # فایل‌های استاتیک
+├── styles/              # استایل‌های سراسری
+└── types/               # تعریف تایپ‌های TypeScript
+```
+
+### 🗺️ نقشه راه
+
+- [x] قابلیت‌های اصلی فروشگاهی
+- [x] احراز هویت چند نقشی
+- [x] سیستم وبلاگ
+- [ ] بخش محتوای آموزشی
+- [ ] پشتیبانی چند زبانه (فارسی/انگلیسی)
+- [ ] ارسال بین‌المللی
+- [ ] اپلیکیشن موبایل
+- [ ] سیستم تایید هنرمندان
+
+### 🤝 مشارکت
+
+مشارکت‌ها چیزی هستند که جامعه متن‌باز را شگفت‌انگیز می‌کنند! هر مشارکتی که انجام دهید **بسیار قدردانی می‌شود**.
+
+1. پروژه را Fork کنید
+2. شاخه Feature خود را ایجاد کنید (`git checkout -b feature/AmazingFeature`)
+3. تغییرات خود را Commit کنید (`git commit -m 'Add some AmazingFeature'`)
+4. به شاخه Push کنید (`git push origin feature/AmazingFeature`)
+5. یک Pull Request باز کنید
+
+### 📄 مجوز
+
+این پروژه تحت مجوز MIT منتشر شده است. برای اطلاعات بیشتر فایل `LICENSE` را مشاهده کنید.
+
+### 👨‍💻 توسعه‌دهنده
+
+**محمد مرادی**  
+GitHub: [@yourusername](https://github.com/yourusername)
+
+---
+
+<div align="center">
+
+**Made with ❤️ for preserving Iranian handicrafts heritage**  
+**ساخته شده با ❤️ برای حفظ میراث صنایع دستی ایرانی**
+
+</div>
