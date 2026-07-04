@@ -179,7 +179,7 @@ Distributed under the MIT License. See `LICENSE` file for more information.
 ### 👨‍💻 Developer
 
 **Mohammad Moradi**  
-GitHub: [@yourusername](https://github.com/yourusername)
+GitHub: [@yourusername]([(https://github.com/MrMohammadMoradi]))
 
 ---
 
@@ -344,7 +344,7 @@ goharsaan-shop/
 ### 👨‍💻 توسعه‌دهنده
 
 **محمد مرادی**  
-GitHub: [@yourusername](https://github.com/yourusername)
+GitHub: [@yourusername]((https://github.com/MrMohammadMoradi))
 
 ---
 
